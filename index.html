@@ -206,35 +206,67 @@ const DAYNAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 let S={user:null,games:JSON.parse(JSON.stringify(INITIAL_GAMES)),history:[],view:'calendar',filter:'all',month:'2026-03',notif:null,confirm:null,lastSync:null,syncing:false};
 
-// SYNC — Google Apps Script requires special fetch handling
-// GET: use a script-injected JSONP-style approach to avoid CORS redirect issues
-// POST: use no-cors mode (fire-and-forget), then GET to confirm
+// SYNC — Google Apps Script requires special handling for CORS
+// GET: JSONP via injected script tag (bypasses CORS entirely)
+// POST: Hidden form submission via iframe (follows redirects natively)
 
 function cloudGet(){
   if(!APPS_SCRIPT_URL)return Promise.resolve(null);
   return new Promise((resolve)=>{
     const cbName='_jcb'+Date.now();
     const script=document.createElement('script');
-    window[cbName]=function(data){resolve(data);delete window[cbName];script.remove();};
-    // Timeout after 10s
-    const timer=setTimeout(()=>{resolve(null);delete window[cbName];script.remove();},10000);
-    script.onerror=()=>{clearTimeout(timer);resolve(null);delete window[cbName];script.remove();};
+    const timer=setTimeout(()=>{resolve(null);delete window[cbName];try{script.remove();}catch(e){}},10000);
+    window[cbName]=function(data){clearTimeout(timer);resolve(data);delete window[cbName];try{script.remove();}catch(e){}};
+    script.onerror=()=>{clearTimeout(timer);resolve(null);delete window[cbName];try{script.remove();}catch(e){}};
     script.src=APPS_SCRIPT_URL+'?action=getData&callback='+cbName;
     document.body.appendChild(script);
   });
 }
-async function cloudPost(){
-  if(!APPS_SCRIPT_URL){saveLocal();return;}
-  saveLocal(); // always save locally too as backup
-  try{
-    await fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({games:S.games,history:S.history})});
-    S.lastSync=new Date();
-  }catch(e){console.error('cloudPost error:',e);}
+
+function cloudPost(){
+  if(!APPS_SCRIPT_URL){saveLocal();return Promise.resolve();}
+  saveLocal();
+  return new Promise((resolve)=>{
+    // Create a hidden iframe + form to POST data
+    // This follows Google's redirects natively (no CORS issues)
+    const frameName='_jpost'+Date.now();
+    const iframe=document.createElement('iframe');
+    iframe.name=frameName;
+    iframe.style.display='none';
+    document.body.appendChild(iframe);
+
+    const form=document.createElement('form');
+    form.method='POST';
+    form.action=APPS_SCRIPT_URL;
+    form.target=frameName;
+    form.style.display='none';
+
+    const input=document.createElement('input');
+    input.type='hidden';
+    input.name='payload';
+    input.value=JSON.stringify({games:S.games,history:S.history});
+    form.appendChild(input);
+
+    document.body.appendChild(form);
+
+    // Clean up after submission
+    iframe.onload=()=>{
+      S.lastSync=new Date();
+      setTimeout(()=>{try{iframe.remove();form.remove();}catch(e){}},1000);
+      resolve();
+    };
+
+    // Timeout safety
+    setTimeout(()=>{try{iframe.remove();form.remove();}catch(e){} resolve();},15000);
+
+    form.submit();
+  });
 }
+
 async function pullCloud(){
   S.syncing=true;render();
   const d=await cloudGet();
-  if(d){if(d.games&&d.games.length>0)S.games=d.games;if(d.history)S.history=d.history;S.lastSync=new Date();}
+  if(d){if(d.games&&d.games.length>0)S.games=d.games;if(d.history)S.history=d.history;S.lastSync=new Date();saveLocal();}
   S.syncing=false;render();
 }
 function saveLocal(){localStorage.setItem('j26g',JSON.stringify(S.games));localStorage.setItem('j26h',JSON.stringify(S.history));}
