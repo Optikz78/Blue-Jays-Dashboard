@@ -233,11 +233,29 @@ function cloudGet(){
 async function cloudPost(){
   if(!APPS_SCRIPT_URL){saveLocal();return;}
   saveLocal();
-  // Send data as a URL-encoded parameter via JSONP GET
-  const payload=JSON.stringify({games:S.games,history:S.history});
-  const result=await jsonpCall({action:'saveData',payload:payload});
-  if(result&&result.success)S.lastSync=new Date();
-  else console.error('cloudPost failed:',result);
+  // Games payload is too large for a single URL (~20K chars).
+  // Split into batches of 10 games sent via separate JSONP calls.
+  // First call clears the sheet, subsequent calls append.
+  const batchSize=10;
+  const games=S.games;
+  const totalBatches=Math.ceil(games.length/batchSize);
+
+  for(let i=0;i<totalBatches;i++){
+    const batch=games.slice(i*batchSize,(i+1)*batchSize);
+    const payload=JSON.stringify({
+      games:batch,
+      history:i===0?S.history:null,
+      batchIndex:i,
+      totalBatches:totalBatches,
+      clearFirst:i===0
+    });
+    const result=await jsonpCall({action:'saveData',payload:payload});
+    if(!result||!result.success){
+      console.error('cloudPost batch '+i+' failed:',result);
+      return;
+    }
+  }
+  S.lastSync=new Date();
 }
 
 async function pullCloud(){
