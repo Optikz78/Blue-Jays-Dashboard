@@ -262,11 +262,19 @@ async function pullCloud(){
   S.syncing=true;render();
   const d=await cloudGet();
   if(d){
-    if(d.games&&d.games.length>0){
-      // Normalize dates - Google Sheets may return dates in various formats
+    if(d.games&&d.games.length>=81){
+      // Full dataset from cloud — use it
       S.games=d.games.map(g=>{g.date=normalizeDate(g.date);return g;});
+    } else if(d.games&&d.games.length>0&&d.games.length<81){
+      // Partial data in sheet — cloud is corrupted/incomplete, re-upload our full set
+      console.warn('Cloud has only '+d.games.length+' games, re-uploading full set');
+      await cloudPost();
+    } else if(!d.games||d.games.length===0){
+      // Sheet is empty — seed it with our data
+      console.log('Sheet empty, seeding with initial data');
+      await cloudPost();
     }
-    if(d.history)S.history=d.history;
+    if(d.history&&d.history.length>0)S.history=d.history;
     S.lastSync=new Date();saveLocal();
   }
   S.syncing=false;render();
