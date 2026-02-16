@@ -206,61 +206,36 @@ const DAYNAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 let S={user:null,games:JSON.parse(JSON.stringify(INITIAL_GAMES)),history:[],view:'calendar',filter:'all',month:'2026-03',notif:null,confirm:null,lastSync:null,syncing:false};
 
-// SYNC — Google Apps Script requires special handling for CORS
-// GET: JSONP via injected script tag (bypasses CORS entirely)
-// POST: Hidden form submission via iframe (follows redirects natively)
+// SYNC — ALL communication via JSONP (script tag injection)
+// This is the only method that reliably bypasses CORS with Google Apps Script
+// Both READ and WRITE go through GET requests with callback parameters
 
-function cloudGet(){
-  if(!APPS_SCRIPT_URL)return Promise.resolve(null);
+function jsonpCall(params){
   return new Promise((resolve)=>{
-    const cbName='_jcb'+Date.now();
-    const script=document.createElement('script');
-    const timer=setTimeout(()=>{resolve(null);delete window[cbName];try{script.remove();}catch(e){}},10000);
+    const cbName='_jcb'+Date.now()+(Math.random()*1000|0);
+    const timer=setTimeout(()=>{resolve(null);delete window[cbName];try{script.remove();}catch(e){}},15000);
     window[cbName]=function(data){clearTimeout(timer);resolve(data);delete window[cbName];try{script.remove();}catch(e){}};
+    const script=document.createElement('script');
     script.onerror=()=>{clearTimeout(timer);resolve(null);delete window[cbName];try{script.remove();}catch(e){}};
-    script.src=APPS_SCRIPT_URL+'?action=getData&callback='+cbName;
+    const qs=Object.keys(params).map(k=>k+'='+encodeURIComponent(params[k])).join('&');
+    script.src=APPS_SCRIPT_URL+'?callback='+cbName+'&'+qs;
     document.body.appendChild(script);
   });
 }
 
-function cloudPost(){
-  if(!APPS_SCRIPT_URL){saveLocal();return Promise.resolve();}
+function cloudGet(){
+  if(!APPS_SCRIPT_URL)return Promise.resolve(null);
+  return jsonpCall({action:'getData'});
+}
+
+async function cloudPost(){
+  if(!APPS_SCRIPT_URL){saveLocal();return;}
   saveLocal();
-  return new Promise((resolve)=>{
-    // Create a hidden iframe + form to POST data
-    // This follows Google's redirects natively (no CORS issues)
-    const frameName='_jpost'+Date.now();
-    const iframe=document.createElement('iframe');
-    iframe.name=frameName;
-    iframe.style.display='none';
-    document.body.appendChild(iframe);
-
-    const form=document.createElement('form');
-    form.method='POST';
-    form.action=APPS_SCRIPT_URL;
-    form.target=frameName;
-    form.style.display='none';
-
-    const input=document.createElement('input');
-    input.type='hidden';
-    input.name='payload';
-    input.value=JSON.stringify({games:S.games,history:S.history});
-    form.appendChild(input);
-
-    document.body.appendChild(form);
-
-    // Clean up after submission
-    iframe.onload=()=>{
-      S.lastSync=new Date();
-      setTimeout(()=>{try{iframe.remove();form.remove();}catch(e){}},1000);
-      resolve();
-    };
-
-    // Timeout safety
-    setTimeout(()=>{try{iframe.remove();form.remove();}catch(e){} resolve();},15000);
-
-    form.submit();
-  });
+  // Send data as a URL-encoded parameter via JSONP GET
+  const payload=JSON.stringify({games:S.games,history:S.history});
+  const result=await jsonpCall({action:'saveData',payload:payload});
+  if(result&&result.success)S.lastSync=new Date();
+  else console.error('cloudPost failed:',result);
 }
 
 async function pullCloud(){
