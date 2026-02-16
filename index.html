@@ -206,14 +206,30 @@ const DAYNAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 let S={user:null,games:JSON.parse(JSON.stringify(INITIAL_GAMES)),history:[],view:'calendar',filter:'all',month:'2026-03',notif:null,confirm:null,lastSync:null,syncing:false};
 
-// SYNC
-async function cloudGet(){
-  if(!APPS_SCRIPT_URL)return null;
-  try{const r=await fetch(APPS_SCRIPT_URL+'?action=getData',{redirect:'follow'});if(!r.ok)return null;return await r.json();}catch(e){console.error(e);return null;}
+// SYNC — Google Apps Script requires special fetch handling
+// GET: use a script-injected JSONP-style approach to avoid CORS redirect issues
+// POST: use no-cors mode (fire-and-forget), then GET to confirm
+
+function cloudGet(){
+  if(!APPS_SCRIPT_URL)return Promise.resolve(null);
+  return new Promise((resolve)=>{
+    const cbName='_jcb'+Date.now();
+    const script=document.createElement('script');
+    window[cbName]=function(data){resolve(data);delete window[cbName];script.remove();};
+    // Timeout after 10s
+    const timer=setTimeout(()=>{resolve(null);delete window[cbName];script.remove();},10000);
+    script.onerror=()=>{clearTimeout(timer);resolve(null);delete window[cbName];script.remove();};
+    script.src=APPS_SCRIPT_URL+'?action=getData&callback='+cbName;
+    document.body.appendChild(script);
+  });
 }
 async function cloudPost(){
   if(!APPS_SCRIPT_URL){saveLocal();return;}
-  try{await fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({games:S.games,history:S.history}),redirect:'follow'});S.lastSync=new Date();}catch(e){console.error(e);saveLocal();}
+  saveLocal(); // always save locally too as backup
+  try{
+    await fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({games:S.games,history:S.history})});
+    S.lastSync=new Date();
+  }catch(e){console.error('cloudPost error:',e);}
 }
 async function pullCloud(){
   S.syncing=true;render();
