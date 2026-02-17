@@ -497,7 +497,7 @@ function render(){
   const orig={};PEOPLE.forEach(p=>orig[p]=INITIAL_GAMES.filter(g=>g.who===p).length);
   h+='<div class="stats-bar">'+PEOPLE.map(p=>{
     const diff=c[p]-orig[p];const ds=diff>0?'+'+diff:diff<0?''+diff:'';
-    return '<div class="stat-block '+(S.filter!=='all'&&S.filter!==p?'dimmed':'')+'" style="background:'+PC[p]+';flex:'+(c[p]||1)+'" onclick="toggleFilter(\''+p+'\')"><div class="num">'+c[p]+'</div><div class="label">'+p+'</div>'+(ds?'<div class="diff">'+ds+'</div>':'')+'</div>';
+    return '<div class="stat-block '+(S.filter!=='all'&&S.filter!==p?'dimmed':'')+'" style="background:'+PC[p]+';flex:'+(c[p]||1)+'" onclick="toggleFilter(\''+p+'\')"><div class="label">'+p+'</div><div class="num">'+c[p]+'</div>'+(ds?'<div class="diff">'+ds+'</div>':'')+'</div>';
   }).join('')+'</div>';
 
   // CONTROLS
