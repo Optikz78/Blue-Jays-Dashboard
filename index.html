@@ -118,87 +118,87 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyb8gugqrnWLJtU04MVwdJzm2WnvXtAr-JPr8mkS5zNzcRUIWukjIy-LxN5qhxZ2D9uUA/exec';
 
 const INITIAL_GAMES = [
-{id:1,date:"2026-03-27",time:"07:07 PM",opponent:"Athletics",assignee:"Jay",onBoard:false,postedBy:""},
-{id:2,date:"2026-03-28",time:"03:07 PM",opponent:"Athletics",assignee:"Rob",onBoard:false,postedBy:""},
-{id:3,date:"2026-03-29",time:"01:37 PM",opponent:"Athletics",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:4,date:"2026-03-30",time:"07:07 PM",opponent:"Rockies",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:5,date:"2026-03-31",time:"07:07 PM",opponent:"Rockies",assignee:"Rob",onBoard:false,postedBy:""},
-{id:6,date:"2026-04-01",time:"01:07 PM",opponent:"Rockies",assignee:"Jay",onBoard:false,postedBy:""},
-{id:7,date:"2026-04-06",time:"07:07 PM",opponent:"Dodgers",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:8,date:"2026-04-07",time:"07:07 PM",opponent:"Dodgers",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:9,date:"2026-04-08",time:"03:07 PM",opponent:"Dodgers",assignee:"Rob",onBoard:false,postedBy:""},
-{id:10,date:"2026-04-10",time:"07:07 PM",opponent:"Twins",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:11,date:"2026-04-11",time:"03:07 PM",opponent:"Twins",assignee:"Rob",onBoard:false,postedBy:""},
-{id:12,date:"2026-04-12",time:"01:37 PM",opponent:"Twins",assignee:"Jay",onBoard:false,postedBy:""},
-{id:13,date:"2026-04-24",time:"07:07 PM",opponent:"Guardians",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:14,date:"2026-04-25",time:"03:07 PM",opponent:"Guardians",assignee:"Rob",onBoard:false,postedBy:""},
-{id:15,date:"2026-04-26",time:"01:37 PM",opponent:"Guardians",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:16,date:"2026-04-27",time:"07:07 PM",opponent:"Red Sox",assignee:"Jay",onBoard:false,postedBy:""},
-{id:17,date:"2026-04-28",time:"07:07 PM",opponent:"Red Sox",assignee:"Rob",onBoard:false,postedBy:""},
-{id:18,date:"2026-04-29",time:"03:07 PM",opponent:"Red Sox",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:19,date:"2026-05-08",time:"07:07 PM",opponent:"Angels",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:20,date:"2026-05-09",time:"03:07 PM",opponent:"Angels",assignee:"Rob",onBoard:false,postedBy:""},
-{id:21,date:"2026-05-10",time:"01:37 PM",opponent:"Angels",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:22,date:"2026-05-11",time:"07:07 PM",opponent:"Rays",assignee:"Rob",onBoard:false,postedBy:""},
-{id:23,date:"2026-05-12",time:"07:07 PM",opponent:"Rays",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:24,date:"2026-05-13",time:"07:07 PM",opponent:"Rays",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:25,date:"2026-05-22",time:"07:07 PM",opponent:"Pirates",assignee:"Jay",onBoard:false,postedBy:""},
-{id:26,date:"2026-05-23",time:"03:07 PM",opponent:"Pirates",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:27,date:"2026-05-24",time:"12:15 PM",opponent:"Pirates",assignee:"Jay",onBoard:false,postedBy:""},
-{id:28,date:"2026-05-25",time:"07:07 PM",opponent:"Marlins",assignee:"Rob",onBoard:false,postedBy:""},
-{id:29,date:"2026-05-26",time:"07:07 PM",opponent:"Marlins",assignee:"Jay",onBoard:false,postedBy:""},
-{id:30,date:"2026-05-27",time:"01:07 PM",opponent:"Marlins",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:31,date:"2026-06-05",time:"07:07 PM",opponent:"Orioles",assignee:"Jay",onBoard:false,postedBy:""},
-{id:32,date:"2026-06-06",time:"03:07 PM",opponent:"Orioles",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:33,date:"2026-06-07",time:"01:37 PM",opponent:"Orioles",assignee:"Jay",onBoard:false,postedBy:""},
-{id:34,date:"2026-06-08",time:"07:07 PM",opponent:"Phillies",assignee:"Rob",onBoard:false,postedBy:""},
-{id:35,date:"2026-06-09",time:"07:07 PM",opponent:"Phillies",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:36,date:"2026-06-10",time:"07:07 PM",opponent:"Phillies",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:37,date:"2026-06-12",time:"07:37 PM",opponent:"Yankees",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:38,date:"2026-06-13",time:"03:07 PM",opponent:"Yankees",assignee:"Rob",onBoard:false,postedBy:""},
-{id:39,date:"2026-06-14",time:"01:37 PM",opponent:"Yankees",assignee:"Jay",onBoard:false,postedBy:""},
-{id:40,date:"2026-06-22",time:"07:07 PM",opponent:"Astros",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:41,date:"2026-06-23",time:"07:07 PM",opponent:"Astros",assignee:"Jay",onBoard:false,postedBy:""},
-{id:42,date:"2026-06-24",time:"07:07 PM",opponent:"Astros",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:43,date:"2026-06-25",time:"07:07 PM",opponent:"Rangers",assignee:"Jay",onBoard:false,postedBy:""},
-{id:44,date:"2026-06-26",time:"07:07 PM",opponent:"Rangers",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:45,date:"2026-06-27",time:"03:07 PM",opponent:"Rangers",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:46,date:"2026-06-28",time:"01:37 PM",opponent:"Rangers",assignee:"Rob",onBoard:false,postedBy:""},
-{id:47,date:"2026-06-29",time:"07:07 PM",opponent:"Mets",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:48,date:"2026-06-30",time:"07:07 PM",opponent:"Mets",assignee:"Rob",onBoard:false,postedBy:""},
-{id:49,date:"2026-07-01",time:"03:07 PM",opponent:"Mets",assignee:"Jay",onBoard:false,postedBy:""},
-{id:50,date:"2026-07-17",time:"07:07 PM",opponent:"White Sox",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:51,date:"2026-07-18",time:"03:07 PM",opponent:"White Sox",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:52,date:"2026-07-19",time:"12:15 PM",opponent:"White Sox",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:53,date:"2026-07-20",time:"07:07 PM",opponent:"Rays",assignee:"Rob",onBoard:false,postedBy:""},
-{id:54,date:"2026-07-21",time:"07:07 PM",opponent:"Rays",assignee:"Jay",onBoard:false,postedBy:""},
-{id:55,date:"2026-07-22",time:"07:07 PM",opponent:"Rays",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:56,date:"2026-07-23",time:"03:07 PM",opponent:"Rays",assignee:"Rob",onBoard:false,postedBy:""},
-{id:57,date:"2026-07-31",time:"07:07 PM",opponent:"Cardinals",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:58,date:"2026-08-01",time:"03:07 PM",opponent:"Cardinals",assignee:"Rob",onBoard:false,postedBy:""},
-{id:59,date:"2026-08-02",time:"01:37 PM",opponent:"Cardinals",assignee:"Jay",onBoard:false,postedBy:""},
-{id:60,date:"2026-08-10",time:"07:07 PM",opponent:"Red Sox",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:61,date:"2026-08-11",time:"07:07 PM",opponent:"Red Sox",assignee:"Jay",onBoard:false,postedBy:""},
-{id:62,date:"2026-08-12",time:"07:07 PM",opponent:"Red Sox",assignee:"Rob",onBoard:false,postedBy:""},
-{id:63,date:"2026-08-13",time:"03:07 PM",opponent:"Red Sox",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:64,date:"2026-08-14",time:"07:07 PM",opponent:"Yankees",assignee:"Rob",onBoard:false,postedBy:""},
-{id:65,date:"2026-08-15",time:"03:07 PM",opponent:"Yankees",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:66,date:"2026-08-16",time:"01:37 PM",opponent:"Yankees",assignee:"Jay",onBoard:false,postedBy:""},
-{id:67,date:"2026-08-25",time:"07:07 PM",opponent:"Royals",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:68,date:"2026-08-26",time:"07:07 PM",opponent:"Royals",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:69,date:"2026-08-27",time:"07:07 PM",opponent:"Royals",assignee:"Jay",onBoard:false,postedBy:""},
-{id:70,date:"2026-08-28",time:"07:07 PM",opponent:"Mariners",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:71,date:"2026-08-29",time:"03:07 PM",opponent:"Mariners",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:72,date:"2026-08-30",time:"01:37 PM",opponent:"Mariners",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:73,date:"2026-09-11",time:"07:07 PM",opponent:"Orioles",assignee:"Jay",onBoard:false,postedBy:""},
-{id:74,date:"2026-09-12",time:"03:07 PM",opponent:"Orioles",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:75,date:"2026-09-13",time:"01:37 PM",opponent:"Orioles",assignee:"Rob",onBoard:false,postedBy:""},
-{id:76,date:"2026-09-14",time:"07:07 PM",opponent:"Tigers",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:77,date:"2026-09-15",time:"07:07 PM",opponent:"Tigers",assignee:"Leanne",onBoard:false,postedBy:""},
-{id:78,date:"2026-09-16",time:"03:07 PM",opponent:"Tigers",assignee:"Geoff",onBoard:false,postedBy:""},
-{id:79,date:"2026-09-25",time:"07:07 PM",opponent:"Reds",assignee:"Rob",onBoard:false,postedBy:""},
-{id:80,date:"2026-09-26",time:"03:07 PM",opponent:"Reds",assignee:"Jay",onBoard:false,postedBy:""},
-{id:81,date:"2026-09-27",time:"03:07 PM",opponent:"Reds",assignee:"Rob",onBoard:false,postedBy:""},
+{id:1,date:"2026-03-27",time:"07:07 PM",opp:"Athletics",who:"Jay"},
+{id:2,date:"2026-03-28",time:"03:07 PM",opp:"Athletics",who:"Rob"},
+{id:3,date:"2026-03-29",time:"01:37 PM",opp:"Athletics",who:"Geoff"},
+{id:4,date:"2026-03-30",time:"07:07 PM",opp:"Rockies",who:"Leanne"},
+{id:5,date:"2026-03-31",time:"07:07 PM",opp:"Rockies",who:"Rob"},
+{id:6,date:"2026-04-01",time:"01:07 PM",opp:"Rockies",who:"Jay"},
+{id:7,date:"2026-04-06",time:"07:07 PM",opp:"Dodgers",who:"Leanne"},
+{id:8,date:"2026-04-07",time:"07:07 PM",opp:"Dodgers",who:"Geoff"},
+{id:9,date:"2026-04-08",time:"03:07 PM",opp:"Dodgers",who:"Rob"},
+{id:10,date:"2026-04-10",time:"07:07 PM",opp:"Twins",who:"Leanne"},
+{id:11,date:"2026-04-11",time:"03:07 PM",opp:"Twins",who:"Rob"},
+{id:12,date:"2026-04-12",time:"01:37 PM",opp:"Twins",who:"Jay"},
+{id:13,date:"2026-04-24",time:"07:07 PM",opp:"Guardians",who:"Leanne"},
+{id:14,date:"2026-04-25",time:"03:07 PM",opp:"Guardians",who:"Rob"},
+{id:15,date:"2026-04-26",time:"01:37 PM",opp:"Guardians",who:"Geoff"},
+{id:16,date:"2026-04-27",time:"07:07 PM",opp:"Red Sox",who:"Jay"},
+{id:17,date:"2026-04-28",time:"07:07 PM",opp:"Red Sox",who:"Rob"},
+{id:18,date:"2026-04-29",time:"03:07 PM",opp:"Red Sox",who:"Geoff"},
+{id:19,date:"2026-05-08",time:"07:07 PM",opp:"Angels",who:"Leanne"},
+{id:20,date:"2026-05-09",time:"03:07 PM",opp:"Angels",who:"Rob"},
+{id:21,date:"2026-05-10",time:"01:37 PM",opp:"Angels",who:"Geoff"},
+{id:22,date:"2026-05-11",time:"07:07 PM",opp:"Rays",who:"Rob"},
+{id:23,date:"2026-05-12",time:"07:07 PM",opp:"Rays",who:"Geoff"},
+{id:24,date:"2026-05-13",time:"07:07 PM",opp:"Rays",who:"Leanne"},
+{id:25,date:"2026-05-22",time:"07:07 PM",opp:"Pirates",who:"Jay"},
+{id:26,date:"2026-05-23",time:"03:07 PM",opp:"Pirates",who:"Leanne"},
+{id:27,date:"2026-05-24",time:"12:15 PM",opp:"Pirates",who:"Jay"},
+{id:28,date:"2026-05-25",time:"07:07 PM",opp:"Marlins",who:"Rob"},
+{id:29,date:"2026-05-26",time:"07:07 PM",opp:"Marlins",who:"Jay"},
+{id:30,date:"2026-05-27",time:"01:07 PM",opp:"Marlins",who:"Geoff"},
+{id:31,date:"2026-06-05",time:"07:07 PM",opp:"Orioles",who:"Jay"},
+{id:32,date:"2026-06-06",time:"03:07 PM",opp:"Orioles",who:"Geoff"},
+{id:33,date:"2026-06-07",time:"01:37 PM",opp:"Orioles",who:"Jay"},
+{id:34,date:"2026-06-08",time:"07:07 PM",opp:"Phillies",who:"Rob"},
+{id:35,date:"2026-06-09",time:"07:07 PM",opp:"Phillies",who:"Geoff"},
+{id:36,date:"2026-06-10",time:"07:07 PM",opp:"Phillies",who:"Leanne"},
+{id:37,date:"2026-06-12",time:"07:37 PM",opp:"Yankees",who:"Geoff"},
+{id:38,date:"2026-06-13",time:"03:07 PM",opp:"Yankees",who:"Rob"},
+{id:39,date:"2026-06-14",time:"01:37 PM",opp:"Yankees",who:"Jay"},
+{id:40,date:"2026-06-22",time:"07:07 PM",opp:"Astros",who:"Leanne"},
+{id:41,date:"2026-06-23",time:"07:07 PM",opp:"Astros",who:"Jay"},
+{id:42,date:"2026-06-24",time:"07:07 PM",opp:"Astros",who:"Geoff"},
+{id:43,date:"2026-06-25",time:"07:07 PM",opp:"Rangers",who:"Jay"},
+{id:44,date:"2026-06-26",time:"07:07 PM",opp:"Rangers",who:"Geoff"},
+{id:45,date:"2026-06-27",time:"03:07 PM",opp:"Rangers",who:"Leanne"},
+{id:46,date:"2026-06-28",time:"01:37 PM",opp:"Rangers",who:"Rob"},
+{id:47,date:"2026-06-29",time:"07:07 PM",opp:"Mets",who:"Leanne"},
+{id:48,date:"2026-06-30",time:"07:07 PM",opp:"Mets",who:"Rob"},
+{id:49,date:"2026-07-01",time:"03:07 PM",opp:"Mets",who:"Jay"},
+{id:50,date:"2026-07-17",time:"07:07 PM",opp:"White Sox",who:"Geoff"},
+{id:51,date:"2026-07-18",time:"03:07 PM",opp:"White Sox",who:"Leanne"},
+{id:52,date:"2026-07-19",time:"12:15 PM",opp:"White Sox",who:"Geoff"},
+{id:53,date:"2026-07-20",time:"07:07 PM",opp:"Rays",who:"Rob"},
+{id:54,date:"2026-07-21",time:"07:07 PM",opp:"Rays",who:"Jay"},
+{id:55,date:"2026-07-22",time:"07:07 PM",opp:"Rays",who:"Leanne"},
+{id:56,date:"2026-07-23",time:"03:07 PM",opp:"Rays",who:"Rob"},
+{id:57,date:"2026-07-31",time:"07:07 PM",opp:"Cardinals",who:"Leanne"},
+{id:58,date:"2026-08-01",time:"03:07 PM",opp:"Cardinals",who:"Rob"},
+{id:59,date:"2026-08-02",time:"01:37 PM",opp:"Cardinals",who:"Jay"},
+{id:60,date:"2026-08-10",time:"07:07 PM",opp:"Red Sox",who:"Geoff"},
+{id:61,date:"2026-08-11",time:"07:07 PM",opp:"Red Sox",who:"Jay"},
+{id:62,date:"2026-08-12",time:"07:07 PM",opp:"Red Sox",who:"Rob"},
+{id:63,date:"2026-08-13",time:"03:07 PM",opp:"Red Sox",who:"Leanne"},
+{id:64,date:"2026-08-14",time:"07:07 PM",opp:"Yankees",who:"Rob"},
+{id:65,date:"2026-08-15",time:"03:07 PM",opp:"Yankees",who:"Leanne"},
+{id:66,date:"2026-08-16",time:"01:37 PM",opp:"Yankees",who:"Jay"},
+{id:67,date:"2026-08-25",time:"07:07 PM",opp:"Royals",who:"Leanne"},
+{id:68,date:"2026-08-26",time:"07:07 PM",opp:"Royals",who:"Geoff"},
+{id:69,date:"2026-08-27",time:"07:07 PM",opp:"Royals",who:"Jay"},
+{id:70,date:"2026-08-28",time:"07:07 PM",opp:"Mariners",who:"Geoff"},
+{id:71,date:"2026-08-29",time:"03:07 PM",opp:"Mariners",who:"Leanne"},
+{id:72,date:"2026-08-30",time:"01:37 PM",opp:"Mariners",who:"Geoff"},
+{id:73,date:"2026-09-11",time:"07:07 PM",opp:"Orioles",who:"Jay"},
+{id:74,date:"2026-09-12",time:"03:07 PM",opp:"Orioles",who:"Leanne"},
+{id:75,date:"2026-09-13",time:"01:37 PM",opp:"Orioles",who:"Rob"},
+{id:76,date:"2026-09-14",time:"07:07 PM",opp:"Tigers",who:"Geoff"},
+{id:77,date:"2026-09-15",time:"07:07 PM",opp:"Tigers",who:"Leanne"},
+{id:78,date:"2026-09-16",time:"03:07 PM",opp:"Tigers",who:"Geoff"},
+{id:79,date:"2026-09-25",time:"07:07 PM",opp:"Reds",who:"Rob"},
+{id:80,date:"2026-09-26",time:"03:07 PM",opp:"Reds",who:"Jay"},
+{id:81,date:"2026-09-27",time:"03:07 PM",opp:"Reds",who:"Rob"}
 ];
 
 const PEOPLE=['Jay','Leanne','Geoff','Rob'];
@@ -206,116 +206,129 @@ const PC={Jay:'var(--jay)',Leanne:'var(--leanne)',Geoff:'var(--geoff)',Rob:'var(
 const MONTHS=[{k:'2026-03',l:'March'},{k:'2026-04',l:'April'},{k:'2026-05',l:'May'},{k:'2026-06',l:'June'},{k:'2026-07',l:'July'},{k:'2026-08',l:'August'},{k:'2026-09',l:'September'}];
 const DAYNAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-let S={user:null,games:JSON.parse(JSON.stringify(INITIAL_GAMES)),history:[],view:'calendar',filter:'all',month:'2026-03',notif:null,confirm:null,lastSync:null,syncing:false};
+// Build the full game state from INITIAL_GAMES
+// Extra fields: board (on swap board?), poster (who posted it)
+function freshGames(){
+  return INITIAL_GAMES.map(g=>({id:g.id,date:g.date,time:g.time,opp:g.opp,who:g.who,board:false,poster:''}));
+}
 
-// SYNC — ALL communication via JSONP (script tag injection)
-// This is the only method that reliably bypasses CORS with Google Apps Script
-// Both READ and WRITE go through GET requests with callback parameters
+// STATE — single source of truth
+let S={
+  user:null,
+  games:freshGames(),
+  history:[], // {id,gid,from,to,desc,ts}
+  view:'calendar',
+  filter:'all',
+  month:'2026-03',
+  notif:null,
+  confirm:null,
+  lastSync:null,
+  syncing:false
+};
 
-function jsonpCall(params){
-  return new Promise((resolve)=>{
-    const cbName='_jcb'+Date.now()+(Math.random()*1000|0);
-    const timer=setTimeout(()=>{resolve(null);delete window[cbName];try{script.remove();}catch(e){}},15000);
-    window[cbName]=function(data){clearTimeout(timer);resolve(data);delete window[cbName];try{script.remove();}catch(e){}};
-    const script=document.createElement('script');
-    script.onerror=()=>{clearTimeout(timer);resolve(null);delete window[cbName];try{script.remove();}catch(e){}};
+// ═══════════════════════════════════════════════════════
+// SYNC — JSONP for reads, chunked JSONP for writes
+// The Apps Script stores the ENTIRE state as one JSON
+// string in a single cell. No rows, no date formatting,
+// no partial writes. Atomic read/write.
+// ═══════════════════════════════════════════════════════
+
+function jsonp(params){
+  return new Promise(resolve=>{
+    const cb='_j'+Date.now()+(Math.random()*9999|0);
+    const s=document.createElement('script');
+    const t=setTimeout(()=>{resolve(null);delete window[cb];try{s.remove();}catch(e){}},20000);
+    window[cb]=function(d){clearTimeout(t);resolve(d);delete window[cb];try{s.remove();}catch(e){}};
+    s.onerror=()=>{clearTimeout(t);resolve(null);delete window[cb];try{s.remove();}catch(e){}};
     const qs=Object.keys(params).map(k=>k+'='+encodeURIComponent(params[k])).join('&');
-    script.src=APPS_SCRIPT_URL+'?callback='+cbName+'&'+qs;
-    document.body.appendChild(script);
+    s.src=APPS_SCRIPT_URL+'?callback='+cb+'&'+qs;
+    document.body.appendChild(s);
   });
 }
 
-function cloudGet(){
-  if(!APPS_SCRIPT_URL)return Promise.resolve(null);
-  return jsonpCall({action:'getData'});
+// READ: single JSONP call, returns {games:[], history:[]}
+async function cloudRead(){
+  if(!APPS_SCRIPT_URL)return null;
+  return await jsonp({action:'getData'});
 }
 
-async function cloudPost(){
-  if(!APPS_SCRIPT_URL){saveLocal();return;}
+// WRITE: chunk the JSON into pieces that fit in a URL
+async function cloudWrite(){
+  if(!APPS_SCRIPT_URL){saveLocal();return false;}
   saveLocal();
-  // Games payload is too large for a single URL (~20K chars).
-  // Split into batches of 10 games sent via separate JSONP calls.
-  // First call clears the sheet, subsequent calls append.
-  const batchSize=10;
-  const games=S.games;
-  const totalBatches=Math.ceil(games.length/batchSize);
 
-  for(let i=0;i<totalBatches;i++){
-    const batch=games.slice(i*batchSize,(i+1)*batchSize);
-    const payload=JSON.stringify({
-      games:batch,
-      history:i===0?S.history:null,
-      batchIndex:i,
-      totalBatches:totalBatches,
-      clearFirst:i===0
-    });
-    const result=await jsonpCall({action:'saveData',payload:payload});
-    if(!result||!result.success){
-      console.error('cloudPost batch '+i+' failed:',result);
-      return;
-    }
+  const json=JSON.stringify({games:S.games,history:S.history});
+  const maxChunk=2500; // stays under URL limit after encoding
+  const chunks=[];
+  for(let i=0;i<json.length;i+=maxChunk){
+    chunks.push(json.substring(i,i+maxChunk));
+  }
+
+  // If it fits in one call, use simple saveData
+  if(chunks.length===1){
+    const r=await jsonp({action:'saveData',payload:json});
+    if(r&&r.success){S.lastSync=new Date();return true;}
+    return false;
+  }
+
+  // Otherwise send as numbered chunks
+  for(let i=0;i<chunks.length;i++){
+    const r=await jsonp({action:'saveChunk',chunk:chunks[i],index:String(i),total:String(chunks.length)});
+    if(!r||!r.success){console.error('Chunk '+i+' failed:',r);return false;}
   }
   S.lastSync=new Date();
+  return true;
 }
 
 async function pullCloud(){
   S.syncing=true;render();
-  const d=await cloudGet();
+  const d=await cloudRead();
   if(d){
-    if(d.games&&d.games.length>=81){
-      // Full dataset from cloud — use it
-      S.games=d.games.map(g=>{g.date=normalizeDate(g.date);return g;});
-    } else if(d.games&&d.games.length>0&&d.games.length<81){
-      // Partial data in sheet — cloud is corrupted/incomplete, re-upload our full set
-      console.warn('Cloud has only '+d.games.length+' games, re-uploading full set');
-      await cloudPost();
-    } else if(!d.games||d.games.length===0){
-      // Sheet is empty — seed it with our data
-      console.log('Sheet empty, seeding with initial data');
-      await cloudPost();
+    if(d.games&&d.games.length===81){
+      S.games=d.games;
+      if(d.history)S.history=d.history;
+    } else {
+      // Cloud empty or invalid — push our local state up
+      await cloudWrite();
     }
-    if(d.history&&d.history.length>0)S.history=d.history;
-    S.lastSync=new Date();saveLocal();
+    S.lastSync=new Date();
+    saveLocal();
   }
   S.syncing=false;render();
 }
-function saveLocal(){localStorage.setItem('j26g',JSON.stringify(S.games));localStorage.setItem('j26h',JSON.stringify(S.history));}
-function loadLocal(){try{const g=localStorage.getItem('j26g'),h=localStorage.getItem('j26h');if(g)S.games=JSON.parse(g);if(h)S.history=JSON.parse(h);}catch(e){}}
 
-// Normalize any date format back to YYYY-MM-DD
-function normalizeDate(d){
-  if(!d)return d;
-  d=String(d);
-  // Already YYYY-MM-DD
-  if(/^\d{4}-\d{2}-\d{2}$/.test(d))return d;
-  // Try parsing whatever Google Sheets returned
-  var parsed=new Date(d);
-  if(isNaN(parsed.getTime())){
-    // Try matching date from ID lookup as fallback
-    return d;
-  }
-  var y=parsed.getFullYear();
-  // Google Sheets sometimes returns 1899 dates - this means it treated it as a time only
-  // In that case, look up the original date from INITIAL_GAMES
-  if(y<2000)return d;
-  var m=String(parsed.getMonth()+1).padStart(2,'0');
-  var day=String(parsed.getDate()).padStart(2,'0');
-  return y+'-'+m+'-'+day;
+function saveLocal(){
+  try{
+    localStorage.setItem('j26g',JSON.stringify(S.games));
+    localStorage.setItem('j26h',JSON.stringify(S.history));
+  }catch(e){}
+}
+function loadLocal(){
+  try{
+    const g=localStorage.getItem('j26g');
+    const h=localStorage.getItem('j26h');
+    if(g){const parsed=JSON.parse(g);if(parsed.length===81)S.games=parsed;}
+    if(h)S.history=JSON.parse(h);
+  }catch(e){}
 }
 
+// ═══════════════════════════════════════════════════════
 // HELPERS
-function fd(d){d=normalizeDate(d);if(!d||!/^\d{4}-\d{2}-\d{2}$/.test(d))return 'Invalid Date';return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});}
-function dw(d){d=normalizeDate(d);if(!d||!/^\d{4}-\d{2}-\d{2}$/.test(d))return '?';return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});}
+// ═══════════════════════════════════════════════════════
+function fd(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});}
+function dw(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});}
 function mi(ym){const[y,m]=ym.split('-').map(Number);return{fd:new Date(y,m-1,1).getDay(),days:new Date(y,m,0).getDate(),y,m};}
-function cts(){const c={};PEOPLE.forEach(p=>c[p]=S.games.filter(g=>g.assignee===p&&!g.onBoard).length);return c;}
-function bg(){return S.games.filter(g=>g.onBoard);}
+function cts(){const c={};PEOPLE.forEach(p=>c[p]=S.games.filter(g=>g.who===p&&!g.board).length);return c;}
+function bg(){return S.games.filter(g=>g.board);}
 function today(){return new Date().toISOString().split('T')[0];}
 
 function notify(msg,type='info'){S.notif={msg,type};render();setTimeout(()=>{S.notif=null;render();},3000);}
 function showConfirm(title,msg,onYes){S.confirm={title,msg,onYes};render();}
 function closeConfirm(){S.confirm=null;render();}
 
+// ═══════════════════════════════════════════════════════
 // ACTIONS
+// ═══════════════════════════════════════════════════════
 function login(p){S.user=p;localStorage.setItem('j26u',p);render();}
 function logout(){S.user=null;localStorage.removeItem('j26u');render();}
 function setView(v){S.view=v;render();}
@@ -325,37 +338,51 @@ function clearFilter(){S.filter='all';render();}
 
 function postToBoard(gid){
   const g=S.games.find(x=>x.id===gid);
-  if(!g||g.assignee!==S.user)return;
-  showConfirm('Post to Swap Board','Post <strong>#'+g.id+' '+fd(g.date)+' vs '+g.opponent+'</strong> to the swap board?<br><br>Anyone can claim it. Your game count will decrease by 1.',async()=>{
-    g.onBoard=true;g.postedBy=S.user;closeConfirm();await cloudPost();notify('Game #'+g.id+' posted to swap board!','success');render();
-  });
+  if(!g||g.who!==S.user)return;
+  showConfirm('Post to Swap Board',
+    'Post <strong>#'+g.id+' '+fd(g.date)+' vs '+g.opp+'</strong> to the swap board?<br><br>Anyone can claim it. Your game count will decrease by 1.',
+    async()=>{
+      g.board=true;g.poster=S.user;
+      closeConfirm();await cloudWrite();notify('Posted to swap board!','success');render();
+    });
 }
 
 async function unpost(gid){
   const g=S.games.find(x=>x.id===gid);if(!g)return;
-  g.onBoard=false;g.postedBy='';await cloudPost();notify('Removed from swap board.','info');render();
+  g.board=false;g.poster='';
+  await cloudWrite();notify('Removed from board.','info');render();
 }
 
 function claimGame(gid){
-  const g=S.games.find(x=>x.id===gid);if(!g||!g.onBoard)return;
-  showConfirm('Claim This Game','Take <strong>#'+g.id+' '+fd(g.date)+' vs '+g.opponent+'</strong> from '+(g.postedBy||g.assignee)+'?<br><br>Your game count will increase by 1.',async()=>{
-    const prev=g.assignee;
-    S.history.push({id:Date.now(),gameId:g.id,from:prev,to:S.user,gameDesc:'#'+g.id+' '+fd(g.date)+' vs '+g.opponent,timestamp:new Date().toISOString()});
-    g.assignee=S.user;g.onBoard=false;g.postedBy='';closeConfirm();await cloudPost();notify('You claimed game #'+g.id+'!','success');render();
-  });
+  const g=S.games.find(x=>x.id===gid);if(!g||!g.board)return;
+  showConfirm('Claim This Game',
+    'Take <strong>#'+g.id+' '+fd(g.date)+' vs '+g.opp+'</strong> from '+(g.poster||g.who)+'?<br><br>Your game count will increase by 1.',
+    async()=>{
+      const prev=g.who;
+      S.history.push({id:Date.now(),gid:g.id,from:prev,to:S.user,desc:'#'+g.id+' '+fd(g.date)+' vs '+g.opp,ts:new Date().toISOString()});
+      g.who=S.user;g.board=false;g.poster='';
+      closeConfirm();await cloudWrite();notify('Claimed game #'+g.id+'!','success');render();
+    });
 }
 
-async function clearHistory(){S.history=[];await cloudPost();render();}
+async function clearHistory(){S.history=[];await cloudWrite();render();}
 
 function resetAll(){
-  showConfirm('Reset Everything','This will restore all original assignments and clear all swap history. Are you sure?',async()=>{
-    S.games=JSON.parse(JSON.stringify(INITIAL_GAMES));S.history=[];closeConfirm();await cloudPost();notify('Reset to original assignments.','info');render();
+  showConfirm('Reset Everything','Restore all original assignments and clear swap history?',async()=>{
+    S.games=freshGames();S.history=[];
+    closeConfirm();await cloudWrite();notify('Reset to original.','info');render();
   });
 }
 
-async function manualSync(){await pullCloud();if(S.lastSync)notify('Synced!','success');else notify('Could not reach Google Sheets.','error');}
+async function manualSync(){
+  await pullCloud();
+  if(S.lastSync)notify('Synced! ('+S.games.length+' games)','success');
+  else notify('Could not reach Google Sheets.','error');
+}
 
+// ═══════════════════════════════════════════════════════
 // RENDER
+// ═══════════════════════════════════════════════════════
 function render(){
   const app=document.getElementById('app');
   const c=cts();const board=bg();let h='';
@@ -372,14 +399,14 @@ function render(){
     return;
   }
 
-  const filtered=S.filter==='all'?S.games:S.games.filter(g=>g.assignee===S.filter);
+  const filtered=S.filter==='all'?S.games:S.games.filter(g=>g.who===S.filter);
   const bc=board.length;
 
   // HEADER
   h+='<div class="header"><div class="header-left"><span class="logo">⚾</span><div><h1>Blue Jays 2026</h1><span class="tag">Home Schedule</span></div></div><div class="header-right">'+(bc>0?'<span class="board-badge">'+bc+' on board</span>':'')+'<div class="user-badge"><span class="dot" style="background:'+PC[S.user]+'"></span>'+S.user+'</div><button class="btn-sm" onclick="manualSync()">'+(S.syncing?'⏳':'↻')+' Sync</button><button class="btn-sm" onclick="logout()">Switch</button></div></div>';
 
   // STATS
-  const orig={};PEOPLE.forEach(p=>orig[p]=INITIAL_GAMES.filter(g=>g.assignee===p).length);
+  const orig={};PEOPLE.forEach(p=>orig[p]=INITIAL_GAMES.filter(g=>g.who===p).length);
   h+='<div class="stats-bar">'+PEOPLE.map(p=>{
     const diff=c[p]-orig[p];const ds=diff>0?'+'+diff:diff<0?''+diff:'';
     return '<div class="stat-block '+(S.filter!=='all'&&S.filter!==p?'dimmed':'')+'" style="background:'+PC[p]+';flex:'+(c[p]||1)+'" onclick="toggleFilter(\''+p+'\')"><div class="num">'+c[p]+'</div><div class="label">'+p+'</div>'+(ds?'<div class="diff">'+ds+'</div>':'')+'</div>';
@@ -404,8 +431,8 @@ function render(){
       const ds=inf.y+'-'+String(inf.m).padStart(2,'0')+'-'+String(d).padStart(2,'0');
       const it=ds===td;const dg=bd[d]||[];
       const chips=dg.map(g=>{
-        const mine=g.assignee===S.user&&!g.onBoard;const dim=S.filter!=='all'&&g.assignee!==S.filter;const ob=g.onBoard;
-        return '<div class="game-chip '+(mine?'mine':'')+' '+(dim?'dimmed':'')+' '+(ob?'on-board':'')+'" style="background:'+PC[g.assignee]+'" '+(mine?'onclick="postToBoard('+g.id+')"':'')+'><div class="opp">vs '+g.opponent+'</div><div class="meta">'+g.time+' · '+g.assignee+(ob?' · 🔄':'')+'</div></div>';
+        const mine=g.who===S.user&&!g.board;const dim=S.filter!=='all'&&g.who!==S.filter;const ob=g.board;
+        return '<div class="game-chip '+(mine?'mine':'')+' '+(dim?'dimmed':'')+' '+(ob?'on-board':'')+'" style="background:'+PC[g.who]+'" '+(mine?'onclick="postToBoard('+g.id+')"':'')+'><div class="opp">vs '+g.opp+'</div><div class="meta">'+g.time+' · '+g.who+(ob?' · 🔄':'')+'</div></div>';
       }).join('');
       cells+='<div class="cal-day '+(it?'today':'')+'"><div class="day-num">'+d+'</div>'+chips+'</div>';
     }
@@ -415,12 +442,12 @@ function render(){
   // LIST
   if(S.view==='list'){
     const rows=filtered.map(g=>{
-      const mine=g.assignee===S.user&&!g.onBoard;const ob=g.onBoard;
+      const mine=g.who===S.user&&!g.board;const ob=g.board;
       let ab='';
       if(mine)ab='<button class="action-btn post" onclick="postToBoard('+g.id+')">Post</button>';
-      else if(ob&&g.assignee!==S.user)ab='<button class="action-btn grab" onclick="claimGame('+g.id+')">Claim</button>';
-      else if(ob&&(g.postedBy===S.user||g.assignee===S.user))ab='<button class="action-btn unpost" onclick="unpost('+g.id+')">Remove</button>';
-      return '<tr style="'+(ob?'opacity:0.6':'')+'"><td style="color:var(--text-muted);font-weight:500">'+g.id+'</td><td style="font-weight:500">'+fd(g.date)+'</td><td style="color:var(--text-secondary)">'+dw(g.date)+'</td><td style="color:var(--text-secondary)">'+g.time+'</td><td style="font-weight:600">'+g.opponent+'</td><td><span class="assignee-pill" style="background:'+PC[g.assignee]+'">'+g.assignee+'</span>'+(ob?' <span style="font-size:10px;color:var(--rob)">🔄</span>':'')+'</td><td>'+ab+'</td></tr>';
+      else if(ob&&g.who!==S.user)ab='<button class="action-btn grab" onclick="claimGame('+g.id+')">Claim</button>';
+      else if(ob&&(g.poster===S.user||g.who===S.user))ab='<button class="action-btn unpost" onclick="unpost('+g.id+')">Remove</button>';
+      return '<tr style="'+(ob?'opacity:0.6':'')+'"><td style="color:var(--text-muted);font-weight:500">'+g.id+'</td><td style="font-weight:500">'+fd(g.date)+'</td><td style="color:var(--text-secondary)">'+dw(g.date)+'</td><td style="color:var(--text-secondary)">'+g.time+'</td><td style="font-weight:600">'+g.opp+'</td><td><span class="assignee-pill" style="background:'+PC[g.who]+'">'+g.who+'</span>'+(ob?' <span style="font-size:10px;color:var(--rob)">🔄</span>':'')+'</td><td>'+ab+'</td></tr>';
     }).join('');
     h+='<div class="list-view"><table class="list-table"><thead><tr><th>#</th><th>Date</th><th>Day</th><th>Time</th><th>Opponent</th><th>Assigned</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
   }
@@ -432,15 +459,15 @@ function render(){
       bh='<div class="empty-state">No games on the swap board right now.<br><br>To post a game, click one of your games in the Calendar or List view.</div>';
     }else{
       bh=board.map(g=>{
-        const canClaim=g.assignee!==S.user&&g.postedBy!==S.user;
-        const canRemove=g.postedBy===S.user||g.assignee===S.user;
-        return '<div class="board-card"><div><div class="game-info"><strong>#'+g.id+' — '+fd(g.date)+' vs '+g.opponent+'</strong><div class="sub">'+dw(g.date)+' · '+g.time+'</div></div><div class="posted-by">Posted by <span style="color:'+PC[g.postedBy||g.assignee]+';font-weight:600">'+(g.postedBy||g.assignee)+'</span></div></div><div class="board-actions">'+(canClaim?'<button class="btn-claim" onclick="claimGame('+g.id+')">Claim This Game</button>':'')+(canRemove?'<button class="btn-remove" onclick="unpost('+g.id+')">Remove</button>':'')+'</div></div>';
+        const canClaim=g.who!==S.user;
+        const canRemove=g.poster===S.user;
+        return '<div class="board-card"><div><div class="game-info"><strong>#'+g.id+' — '+fd(g.date)+' vs '+g.opp+'</strong><div class="sub">'+dw(g.date)+' · '+g.time+'</div></div><div class="posted-by">Posted by <span style="color:'+PC[g.poster||g.who]+';font-weight:600">'+(g.poster||g.who)+'</span></div></div><div class="board-actions">'+(canClaim?'<button class="btn-claim" onclick="claimGame('+g.id+')">Claim This Game</button>':'')+(canRemove?'<button class="btn-remove" onclick="unpost('+g.id+')">Remove</button>':'')+'</div></div>';
       }).join('');
     }
 
     let hh='';
     if(S.history.length>0){
-      hh='<div class="history-section"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="board-title" style="margin:0">Swap History</div><div style="display:flex;gap:8px"><button class="btn-sm" onclick="clearHistory()">Clear</button><button class="btn-sm" style="border-color:rgba(239,68,68,0.3);color:#EF4444" onclick="resetAll()">Reset All</button></div></div>'+S.history.slice().reverse().map(x=>'<div class="history-card"><div>'+x.gameDesc+': <span style="color:'+PC[x.from]+';font-weight:600">'+x.from+'</span> → <span style="color:'+PC[x.to]+';font-weight:600">'+x.to+'</span></div><span class="status-tag" style="background:var(--geoff)">swapped</span></div>').join('')+'</div>';
+      hh='<div class="history-section"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="board-title" style="margin:0">Swap History</div><div style="display:flex;gap:8px"><button class="btn-sm" onclick="clearHistory()">Clear</button><button class="btn-sm" style="border-color:rgba(239,68,68,0.3);color:#EF4444" onclick="resetAll()">Reset All</button></div></div>'+S.history.slice().reverse().map(x=>'<div class="history-card"><div>'+x.desc+': <span style="color:'+PC[x.from]+';font-weight:600">'+x.from+'</span> → <span style="color:'+PC[x.to]+';font-weight:600">'+x.to+'</span></div><span class="status-tag" style="background:var(--geoff)">swapped</span></div>').join('')+'</div>';
     }else{
       hh='<div class="history-section"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div class="board-title" style="margin:0">Swap History</div><button class="btn-sm" style="border-color:rgba(239,68,68,0.3);color:#EF4444" onclick="resetAll()">Reset All</button></div><div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">No swaps yet.</div></div>';
     }
@@ -455,11 +482,14 @@ function render(){
   app.innerHTML=h;
 }
 
+// ═══════════════════════════════════════════════════════
 // INIT
+// ═══════════════════════════════════════════════════════
 (async function(){
   const sv=localStorage.getItem('j26u');
   if(sv&&PEOPLE.includes(sv))S.user=sv;
-  loadLocal();render();
+  loadLocal();
+  render();
   if(APPS_SCRIPT_URL)await pullCloud();
 })();
 
