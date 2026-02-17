@@ -109,7 +109,85 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}
-@media(max-width:700px){.cal-day{min-height:70px;padding:3px}.game-chip{padding:3px 4px;font-size:9px}.stats-bar{margin:12px 16px}.header,.controls,.calendar,.list-view,.swap-board,.footer{padding-left:16px;padding-right:16px}.list-table{font-size:11px}.list-table th,.list-table td{padding:8px 6px}}
+@media(max-width:700px){
+  /* HEADER */
+  .header{padding:12px 16px;gap:8px}
+  .header-left .logo{font-size:22px}
+  .header-left h1{font-size:17px}
+  .header-right{gap:6px}
+  .user-badge{padding:4px 10px;font-size:13px}
+  .btn-sm{padding:6px 12px;font-size:11px}
+  .board-badge{font-size:11px;padding:2px 9px}
+
+  /* STATS — 2x2 grid */
+  .stats-bar{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:12px 16px;border-radius:10px}
+  .stat-block{padding:12px 14px;border-radius:0}
+  .stat-block .num{font-size:24px}
+  .stat-block .label{font-size:11px}
+
+  /* CONTROLS */
+  .controls{padding:0 16px;gap:8px;margin-bottom:12px}
+  .tab-group{width:100%;justify-content:stretch}
+  .tab-btn{flex:1;padding:9px 8px;font-size:12px;text-align:center}
+  .month-tabs{width:100%;justify-content:space-between}
+  .month-btn{flex:1;text-align:center;padding:8px 4px;font-size:11px}
+  .filter-group{width:100%;display:flex;justify-content:flex-end}
+
+  /* CALENDAR — hide 7-col grid, show mobile list */
+  .calendar{padding:0 16px 16px}
+  .cal-grid{display:none}
+  .cal-mobile{display:flex;flex-direction:column;gap:4px}
+  .cal-mobile-day{background:rgba(0,0,0,0.15);border-radius:8px;padding:10px 12px;display:flex;align-items:flex-start;gap:12px}
+  .cal-mobile-day.today{border-left:3px solid var(--accent);background:rgba(59,130,246,0.06)}
+  .cal-mobile-date{min-width:56px;text-align:center;flex-shrink:0}
+  .cal-mobile-date .dm{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+  .cal-mobile-date .dd{font-size:22px;font-weight:700;color:var(--text-secondary);line-height:1.2}
+  .cal-mobile-date .dw{font-size:10px;color:var(--text-muted)}
+  .cal-mobile-day.today .cal-mobile-date .dd{color:var(--accent)}
+  .cal-mobile-games{flex:1;display:flex;flex-direction:column;gap:4px}
+  .game-chip-m{padding:8px 10px;border-radius:6px;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600}
+  .game-chip-m.mine{border:1px solid rgba(255,255,255,0.3);cursor:pointer}
+  .game-chip-m.dimmed{opacity:.2}
+  .game-chip-m.on-board{opacity:.45;border:1px dashed rgba(255,255,255,0.4)}
+  .game-chip-m .gm-left{display:flex;flex-direction:column;gap:1px}
+  .game-chip-m .gm-opp{font-size:14px}
+  .game-chip-m .gm-meta{font-size:11px;opacity:.7}
+  .game-chip-m .gm-who{font-size:11px;background:rgba(0,0,0,0.2);padding:2px 8px;border-radius:4px}
+
+  /* LIST — card layout */
+  .list-view{padding:0 16px 16px}
+  .list-table{display:none}
+  .list-cards{display:flex;flex-direction:column;gap:6px}
+  .list-card{background:rgba(0,0,0,0.15);border-radius:8px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--border)}
+  .list-card.on-board{opacity:.6}
+  .list-card .lc-main{flex:1}
+  .list-card .lc-opp{font-size:15px;font-weight:700}
+  .list-card .lc-date{font-size:12px;color:var(--text-secondary);margin-top:2px}
+  .list-card .lc-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+  .list-card .assignee-pill{font-size:12px}
+  .list-card .action-btn{font-size:12px;padding:6px 12px}
+
+  /* SWAP BOARD */
+  .swap-board{padding:0 16px 16px;max-width:100%}
+  .board-card{padding:14px;flex-direction:column;align-items:stretch;gap:10px}
+  .board-actions{justify-content:stretch}
+  .btn-claim{flex:1;text-align:center;padding:10px}
+  .btn-remove{flex:1;text-align:center;padding:10px}
+
+  /* MODAL */
+  .modal-box{padding:22px;width:95vw}
+  .modal-box h3{font-size:18px}
+
+  /* FOOTER */
+  .footer{padding:10px 16px;font-size:10px}
+
+  .cal-hint{font-size:10px;margin-top:8px}
+}
+/* Hide mobile elements on desktop */
+@media(min-width:701px){
+  .cal-mobile{display:none !important}
+  .list-cards{display:none !important}
+}
 </style>
 </head>
 <body>
@@ -425,6 +503,8 @@ function render(){
     const inf=mi(S.month);const mg=filtered.filter(g=>g.date.startsWith(S.month));
     const bd={};mg.forEach(g=>{const d=parseInt(g.date.split('-')[2]);if(!bd[d])bd[d]=[];bd[d].push(g);});
     const td=today();
+
+    // Desktop grid
     let cells=DAYNAMES.map(d=>'<div class="cal-header">'+d+'</div>').join('');
     for(let i=0;i<inf.fd;i++)cells+='<div class="cal-day empty"></div>';
     for(let d=1;d<=inf.days;d++){
@@ -436,7 +516,25 @@ function render(){
       }).join('');
       cells+='<div class="cal-day '+(it?'today':'')+'"><div class="day-num">'+d+'</div>'+chips+'</div>';
     }
-    h+='<div class="calendar"><div class="cal-grid">'+cells+'</div><p class="cal-hint">Click your games to post them to the swap board</p></div>';
+
+    // Mobile list — only days with games
+    let mobileCards='';
+    for(let d=1;d<=inf.days;d++){
+      const dg=bd[d]||[];
+      if(dg.length===0)continue;
+      const ds=inf.y+'-'+String(inf.m).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+      const it=ds===td;
+      const dateObj=new Date(ds+'T12:00:00');
+      const monthName=dateObj.toLocaleDateString('en-US',{month:'short'});
+      const dayName=dateObj.toLocaleDateString('en-US',{weekday:'short'});
+      const chips=dg.map(g=>{
+        const mine=g.who===S.user&&!g.board;const dim=S.filter!=='all'&&g.who!==S.filter;const ob=g.board;
+        return '<div class="game-chip-m '+(mine?'mine':'')+' '+(dim?'dimmed':'')+' '+(ob?'on-board':'')+'" style="background:'+PC[g.who]+'" '+(mine?'onclick="postToBoard('+g.id+')"':'')+'><div class="gm-left"><span class="gm-opp">vs '+g.opp+'</span><span class="gm-meta">'+g.time+(ob?' · 🔄':'')+'</span></div><span class="gm-who">'+g.who+'</span></div>';
+      }).join('');
+      mobileCards+='<div class="cal-mobile-day '+(it?'today':'')+'"><div class="cal-mobile-date"><div class="dm">'+monthName+'</div><div class="dd">'+d+'</div><div class="dw">'+dayName+'</div></div><div class="cal-mobile-games">'+chips+'</div></div>';
+    }
+
+    h+='<div class="calendar"><div class="cal-grid">'+cells+'</div><div class="cal-mobile">'+mobileCards+'</div><p class="cal-hint">Tap your games to post them to the swap board</p></div>';
   }
 
   // LIST
@@ -449,7 +547,18 @@ function render(){
       else if(ob&&(g.poster===S.user||g.who===S.user))ab='<button class="action-btn unpost" onclick="unpost('+g.id+')">Remove</button>';
       return '<tr style="'+(ob?'opacity:0.6':'')+'"><td style="color:var(--text-muted);font-weight:500">'+g.id+'</td><td style="font-weight:500">'+fd(g.date)+'</td><td style="color:var(--text-secondary)">'+dw(g.date)+'</td><td style="color:var(--text-secondary)">'+g.time+'</td><td style="font-weight:600">'+g.opp+'</td><td><span class="assignee-pill" style="background:'+PC[g.who]+'">'+g.who+'</span>'+(ob?' <span style="font-size:10px;color:var(--rob)">🔄</span>':'')+'</td><td>'+ab+'</td></tr>';
     }).join('');
-    h+='<div class="list-view"><table class="list-table"><thead><tr><th>#</th><th>Date</th><th>Day</th><th>Time</th><th>Opponent</th><th>Assigned</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+
+    // Mobile cards
+    const cards=filtered.map(g=>{
+      const mine=g.who===S.user&&!g.board;const ob=g.board;
+      let ab='';
+      if(mine)ab='<button class="action-btn post" onclick="postToBoard('+g.id+')">Post</button>';
+      else if(ob&&g.who!==S.user)ab='<button class="action-btn grab" onclick="claimGame('+g.id+')">Claim</button>';
+      else if(ob&&(g.poster===S.user||g.who===S.user))ab='<button class="action-btn unpost" onclick="unpost('+g.id+')">Remove</button>';
+      return '<div class="list-card '+(ob?'on-board':'')+'"><div class="lc-main"><div class="lc-opp">vs '+g.opp+'</div><div class="lc-date">'+fd(g.date)+' · '+dw(g.date)+' · '+g.time+'</div></div><div class="lc-right"><span class="assignee-pill" style="background:'+PC[g.who]+'">'+g.who+(ob?' 🔄':'')+'</span>'+ab+'</div></div>';
+    }).join('');
+
+    h+='<div class="list-view"><table class="list-table"><thead><tr><th>#</th><th>Date</th><th>Day</th><th>Time</th><th>Opponent</th><th>Assigned</th><th></th></tr></thead><tbody>'+rows+'</tbody></table><div class="list-cards">'+cards+'</div></div>';
   }
 
   // SWAP BOARD
